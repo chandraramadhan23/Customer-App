@@ -13,21 +13,21 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         Customer::create([
-            'user_id' => 1218,
+            // 'user_id' => 1218,
             'name' => 'Chandra Ramadhan',
             'email' => 'chandraramadhan@gmail.com',
             'status' => 'NEW CUSTOMER',
         ]);
 
         Customer::create([
-            'user_id' => 7690,
+            // 'user_id' => 7690,
             'name' => 'Daru',
             'email' => 'daru@gmail.com',
             'status' => 'NEW CUSTOMER',
         ]);
 
         Customer::create([
-            'user_id' => 3435,
+            // 'user_id' => 3435,
             'name' => 'Ramadhan',
             'email' => 'ramadhan@gmail.com',
             'status' => 'LOYAL CUSTOMER',

@@ -14,13 +14,13 @@ class CreateCustomersTable extends Migration
     public function up()
     {
         Schema::create('customers', function (Blueprint $table) {
-            $table->string('user_id')->primary();
+            $table->id();
+            $table->string('user_id')->unique();
             $table->string('name');
             $table->string('email');
             $table->enum('status', ['NEW CUSTOMER', 'LOYAL CUSTOMER']);
             $table->timestamps();
 
-            // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
