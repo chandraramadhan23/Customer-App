@@ -25,7 +25,11 @@ Route::get('/', function() {
 
 Route::get('/customer', 'CustomerController@index');
 
-Route::get('/showTableCustomers', 'CustomerController@showCustomer');
+Route::get('/showTableCustomer', 'CustomerController@showCustomers');
 
 Route::get('/user', 'UserController@index');
+
+// Route::get('/showTableUser', 'UserController@showUsers');
+
+Route::post('/addCustomer', 'CustomerController@addCustomer');
 

@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Customer;
 use Illuminate\Http\Request;
-use DataTables;
-// use Yajra\Dataables\Dataables;
+use Yajra\Datatables\Datatables;
 
 class CustomerController extends Controller
 {
@@ -13,9 +12,16 @@ class CustomerController extends Controller
         return view('customer');
     }
 
-    public function showCustomer() {
+    public function showCustomers() {
         $customers = Customer::all();
 
         return Datatables::of($customers)->make(true);
+    }
+
+    public function addCustomer(Request $request) {
+        Customer::create([
+            'name' => $request->name,
+            'email' => $request->email,
+        ]);
     }
 }

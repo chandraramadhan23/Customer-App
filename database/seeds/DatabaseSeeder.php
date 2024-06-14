@@ -1,6 +1,7 @@
 <?php
 
 use App\Customer;
+use App\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -31,6 +32,16 @@ class DatabaseSeeder extends Seeder
             'name' => 'Ramadhan',
             'email' => 'ramadhan@gmail.com',
             'status' => 'LOYAL CUSTOMER',
+        ]);
+
+        User::create([
+            'username' => 'user1',
+            'password'=> '123',
+        ]);
+
+        User::create([
+            'username' => 'user2',
+            'password'=> '123',
         ]);
     }
 }

@@ -126,10 +126,42 @@
 
     <script src="assets/js/pages/datatables.init.js"></script>
 
+
+    
     <!-- App js -->
     <script src="assets/js/app.js"></script>
 
     @stack('tableCustomer')
+    {{-- @stack('tableUser') --}}
+
+
+
+    <!-- Modal add Customer -->
+    @include('modals.modalAddCustomer')
+
+    <script>
+        $(document).on('click', '#addCustomerButton', function() {
+                $('#formAddCustomer').modal('show')
+            })
+
+            $(document).on('click', '#sumitAddCustomer', function() {
+                const name = $('#name').val()
+                const email = $('#email').val()
+
+                $.ajax({
+                type: 'post',
+                url: '/addCustomer',
+                data: {
+                    name: name,
+                    email: email,
+                },
+                success: function() {
+                    alert('Berhasil!')
+                    window.location.reload()
+                }
+            })
+            })
+    </script>
 
 </body>
 
