@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/', function() {
+Route::get('/dashboard', function() {
     return view('dashboard');
 });
 
@@ -29,7 +29,22 @@ Route::get('/showTableCustomer', 'CustomerController@showCustomers');
 
 Route::get('/user', 'UserController@index');
 
-// Route::get('/showTableUser', 'UserController@showUsers');
+Route::get('/showTableUser', 'UserController@showUsers');
+
+Route::post('/delete/{id}', 'UserController@delete');
+
+
+
 
 Route::post('/addCustomer', 'CustomerController@addCustomer');
+
+Route::get('/login', 'LoginController@index');
+
+Route::post('/login', 'LoginController@login');
+
+Route::post('/logout', 'LogoutController@logout');
+
+
+
+
 

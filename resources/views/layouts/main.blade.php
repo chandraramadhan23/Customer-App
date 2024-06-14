@@ -132,7 +132,7 @@
     <script src="assets/js/app.js"></script>
 
     @stack('tableCustomer')
-    {{-- @stack('tableUser') --}}
+    @stack('tableUser')
 
 
 
@@ -161,6 +161,24 @@
                 }
             })
             })
+    </script>
+
+
+    {{-- Logout --}}
+    <script>
+
+    $(document).on('click', '#logout', function(){
+        $.ajax({
+            type: 'post',
+            url: '/logout',
+            success: function() {
+                if (confirm('Are you sure?')) {
+                    window.location.href = '/login';
+                }
+            }
+        })
+    }) 
+
     </script>
 
 </body>

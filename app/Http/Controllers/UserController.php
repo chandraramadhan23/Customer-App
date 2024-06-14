@@ -17,4 +17,8 @@ class UserController extends Controller
 
         return Datatables::of($users)->make(true);
     }
+
+    public function delete($id) {
+        User::find($id)->delete();
+    }
 }

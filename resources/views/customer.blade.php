@@ -39,7 +39,7 @@
                                             <th data-ordering="false">Name</th>
                                             <th data-ordering="false">Email</th>
                                             <th>Status</th>
-                                            {{-- <th>Action</th> --}}
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                 </table>

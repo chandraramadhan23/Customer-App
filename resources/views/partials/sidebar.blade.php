@@ -35,7 +35,7 @@
                 <li class="menu-title"><span data-key="t-menu">Pages</span></li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/" aria-controls="sidebarDashboards">
+                    <a class="nav-link" href="/dashboard" aria-controls="sidebarDashboards">
                         <i class="mdi mdi-speedometer"></i> <span data-key="t-dashboards">Dashboards</span>
                     </a>
                 </li>

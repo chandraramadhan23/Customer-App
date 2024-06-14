@@ -15,8 +15,8 @@ class DatabaseSeeder extends Seeder
     {
         Customer::create([
             // 'user_id' => 1218,
-            'name' => 'Chandra Ramadhan',
-            'email' => 'chandraramadhan@gmail.com',
+            'name' => 'Taufan Fajar',
+            'email' => 'taufan@gmail.com',
             'status' => 'NEW CUSTOMER',
         ]);
 
@@ -36,12 +36,14 @@ class DatabaseSeeder extends Seeder
 
         User::create([
             'username' => 'user1',
-            'password'=> '123',
+            'name' => 'Muhammad Chandra Ramadhan',
+            'password'=> bcrypt('123'),
         ]);
 
         User::create([
             'username' => 'user2',
-            'password'=> '123',
+            'name' => 'Meleni Alfianti',
+            'password'=> bcrypt('123'),
         ]);
     }
 }

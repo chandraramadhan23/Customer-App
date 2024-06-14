@@ -28,8 +28,9 @@
                                             {{-- <th data-ordering="false">No</th> --}}
                                             <th data-ordering="false">ID</th>
                                             <th data-ordering="false">Username</th>
-                                            <th data-ordering="false">Password</th>
-                                            {{-- <th>Action</th> --}}
+                                            <th data-ordering="false">name</th>
+                                            {{-- <th data-ordering="false">Password</th> --}}
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                 </table>
@@ -49,7 +50,7 @@
 
 @push('tableUser')
     <script>
-        $('#tableUser').DataTable({
+        let table = $('#tableUser').DataTable({
             searching: true,
             serverSide: true,
             ajax: {
@@ -59,8 +60,31 @@
             columns: [
                 {data: 'id'},
                 {data: 'username'},
-                {data: 'password'},
+                {data: 'name'},
+                {
+                    render:function(data, type, row) {
+                        return `
+                            <button class='btn btn-info'>Edit</button>
+                            <button class='btn btn-danger delete' data-id='${row.id}'>Delete</button>
+                        `
+                    }
+                }
             ]
         })
+
+        $(document).on('click', '.delete', function(){
+
+        let id = $(this).data('id')
+
+        $.ajax({
+            type: 'post',
+            url: '/delete/' + id,
+            success: function() {
+                if (confirm('Are you sure?')) {
+                    table.ajax.reload();
+                }
+            }
+        })
+    }) 
     </script>
 @endpush
