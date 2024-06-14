@@ -92,6 +92,9 @@
     <!-- Jquey cdn -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
+    <!-- Chart cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <!-- JAVASCRIPT -->
     <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="assets/libs/simplebar/simplebar.min.js"></script>
@@ -131,7 +134,10 @@
 
 
     @yield('modal')
+    
     @yield('table')
+
+    @yield('chart')
 
 
 

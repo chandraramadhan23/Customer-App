@@ -19,15 +19,18 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/dashboard', function() {
-    return view('dashboard');
-});
+Route::get('/dashboard', 'DashboardController@index');
+
+
+
+
 
 Route::get('/customer', 'CustomerController@index');
 
 Route::get('/showTableCustomer', 'CustomerController@showCustomers');
 
 Route::post('/addCustomer', 'CustomerController@addCustomer');
+
 
 
 
