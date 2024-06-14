@@ -57,7 +57,41 @@
 
 @endsection
 
-@push('tableCustomer')
+
+
+@section('modal')
+    <!-- Modal add Customer -->
+    @include('modals.modalAddCustomer')
+
+    <script>
+        $(document).on('click', '#addCustomerButton', function() {
+                $('#formAddCustomer').modal('show')
+            })
+
+            $(document).on('click', '#submitAddCustomer', function() {
+                const name = $('#name').val()
+                const email = $('#email').val()
+
+                $.ajax({
+                type: 'post',
+                url: '/addCustomer',
+                data: {
+                    name: name,
+                    email: email,
+                },
+                success: function() {
+                    alert('Berhasil!')
+                    window.location.reload()
+                }
+            })
+            })
+    </script>
+@endsection
+
+
+
+
+@section('table')
     <script>
         $('#tableCustomer').DataTable({
             searching: true,
@@ -74,4 +108,4 @@
             ]
         })
     </script>
-@endpush
+@endsection

@@ -27,16 +27,25 @@ Route::get('/customer', 'CustomerController@index');
 
 Route::get('/showTableCustomer', 'CustomerController@showCustomers');
 
+Route::post('/addCustomer', 'CustomerController@addCustomer');
+
+
+
 Route::get('/user', 'UserController@index');
 
 Route::get('/showTableUser', 'UserController@showUsers');
+
+Route::post('/addUser', 'UserController@addUser');
+
+Route::get('/showEdit/{id}', 'UserController@showEdit');
+
+Route::post('/edit/{id}', 'UserController@edit');
 
 Route::post('/delete/{id}', 'UserController@delete');
 
 
 
 
-Route::post('/addCustomer', 'CustomerController@addCustomer');
 
 Route::get('/login', 'LoginController@index');
 
