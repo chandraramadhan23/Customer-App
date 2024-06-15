@@ -31,9 +31,9 @@
                                 <h5 class="card-title mb-0">List Customer</h5>
                             </div>
                             <div class="card-body">
-                                <table id="tableCustomer" class="table table-bordered nowrap table-striped align-middle" style="width:100%">
+                                <table id="tableCustomer" class="table table-hover nowrap align-middle" style="width:100%">
                                     <thead>
-                                        <tr>
+                                        <tr class="table-light">
                                             {{-- <th data-ordering="false">No</th> --}}
                                             <th data-ordering="false">User ID</th>
                                             <th data-ordering="false">Name</th>
@@ -96,7 +96,7 @@
                     })
                     setTimeout(function(){
                         window.location.reload()
-                    }, 1500)
+                    }, 1000)
                 }
             })
             })
@@ -123,7 +123,7 @@
                 {
                     render:function(data, type, row) {
                         return `
-                            <button class='btn btn-info edit' data-id='${row.id}'>Edit</button>
+                            <button class='btn btn-success edit' data-id='${row.id}'>Update</button>
                             <button class='btn btn-danger delete' data-id='${row.id}'>Delete</button>
                         `
                     }
@@ -206,31 +206,40 @@
 
         let id = $(this).data('id')
 
-        $.ajax({
-            type: 'post',
-            url: '/deleteCustomer/' + id,
-            success: function() {
-                Swal.fire({
-                title: "Are you sure?",
-                text: "You won't be able to revert this!",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Yes, delete it!"
-                }).then((result) => {
-                if (result.isConfirmed) {
-                    Swal.fire({
-                    title: "Deleted!",
-                    text: "Customer has been deleted.",
-                    icon: "success"
-                    });
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to delete this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    type: 'post',
+                    url: '/deleteCustomer/' + id,
+                    success: function() {
+                        Swal.fire({
+                        title: "Deleted!",
+                        text: "Customer has been deleted.",
+                        icon: "success"
+                        });
 
-                    table.ajax.reload();
-                }
+                        table.ajax.reload();
+                    },
+                    error: function() {
+                    Swal.fire({
+                        title: "Error!",
+                        text: "There was an error deleting the customer.",
+                        icon: "error"
+                    });
+                    }
                 });
+            } else {
+                table.ajax.reload();
             }
-            })
+        })
         }) 
     </script>
 @endsection

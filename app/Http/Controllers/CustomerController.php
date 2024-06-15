@@ -7,12 +7,15 @@ use App\Jobs\LoyalCustomerJob;
 use App\Jobs\NewCustomerJob;
 use App\Mail\LoyalCustomerMail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Yajra\Datatables\Datatables;
 
 class CustomerController extends Controller
 {
     public function index() {
-        return view('customer');
+        $user = Auth::user();
+
+        return view('customer', compact('user'));
     }
 
     public function showCustomers() {

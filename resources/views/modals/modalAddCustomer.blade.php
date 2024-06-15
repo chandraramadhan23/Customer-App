@@ -8,9 +8,6 @@
             </div>
             <div class="modal-body">
                 <form>
-                    <div class="text-warning">
-                        Menambah customer baru akan mengirimkan email secara otomatis!
-                    </div>
                     <div class="mb-3">
                         <label for="recipient-name" class="col-form-label">Name :</label>
                         <input type="text" class="form-control" id="name" name="recipient-name">

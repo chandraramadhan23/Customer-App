@@ -23,9 +23,9 @@
                                 <h5 class="card-title mb-0">List User</h5>
                             </div>
                             <div class="card-body">
-                                <table id="tableUser" class="table table-bordered nowrap table-striped align-middle" style="width:100%">
+                                <table id="tableUser" class="table table-hover nowrap table-striped align-middle" style="width:100%">
                                     <thead>
-                                        <tr>
+                                        <tr class="table-light">
                                             <th data-ordering="false">No</th>
                                             <th data-ordering="false">Username</th>
                                             <th data-ordering="false">Name</th>
@@ -109,7 +109,7 @@
                 {
                     render:function(data, type, row) {
                         return `
-                            <button class='btn btn-info edit' data-id='${row.id}'>Edit</button>
+                            <button class='btn btn-secondary edit' data-id='${row.id}'>Edit</button>
                             <button class='btn btn-danger delete' data-id='${row.id}'>Delete</button>
                         `
                     }
@@ -185,31 +185,41 @@
 
         let id = $(this).data('id')
 
-        $.ajax({
-            type: 'post',
-            url: '/delete/' + id,
-            success: function() {
-                Swal.fire({
-                title: "Are you sure?",
-                text: "You won't be able to revert this!",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Yes, delete it!"
-                }).then((result) => {
-                if (result.isConfirmed) {
-                    Swal.fire({
-                    title: "Deleted!",
-                    text: "User has been deleted.",
-                    icon: "success"
-                    });
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to delete this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    type: 'post',
+                    url: '/delete/' + id,
+                    success: function() {
+                        Swal.fire({
+                        title: "Deleted!",
+                        text: "User has been deleted.",
+                        icon: "success"
+                        });
 
-                    table.ajax.reload();
-                }
+                        table.ajax.reload();
+                    },
+                    error: function() {
+                    Swal.fire({
+                        title: "Error!",
+                        text: "There was an error deleting the user.",
+                        icon: "error"
+                    });
+                    }
                 });
-              }
-            })
+            } else {
+                table.ajax.reload();
+            }
+        })
+
         }) 
     </script>
 @endsection

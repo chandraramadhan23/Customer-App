@@ -17,7 +17,6 @@
 
                 <div class="row mt-3">
                     <div class="col-12">
-
                         <div class="row">
                             <div class="col-lg-4">
                                 <div class="card">
@@ -26,7 +25,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-4">
+                            <div class="col-lg-3">
                                 <div class="row">
                                     <div id="cardCustomer" class="card px-4 py-4 waves-effect waves-primary">
                                         <h3 class="mb-3">Total Customers</h3>
@@ -35,10 +34,20 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div id="cardUser" class="card px-4 py-4 waves-effect waves-primary">
-                                        <h3 class="mb-3">Total User</h3>
-                                        <h6>Total user : {{ $totalUser }}</h6>
+                                    <div id="cardUser" class="card px-4 py-4 waves-effect waves-primary" style="background: linear-gradient(90deg, #48c6ef 0%, #6f86d6 100%)">
+                                        <h3 class="mb-3 text-white">Total User</h3>
+                                        <h6 class="text-white">Total user : {{ $totalUser }}</h6>
                                     </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-5">
+                                <div class="card px-4 py-4" style="background: linear-gradient(90deg, #ff758c 0%, #ff7eb3 100%)">
+                                    
+                                        <h3 class="mb-3 text-white">Profile</h3>
+                                        <h2 class="text-white"><b>{{ $user->name }}</b></h2>
+                                        <h6 class="text-white">Username : {{ $user->username }}</h6>
+                                        <h6 class="text-white">Email : (belum tersedia)</h6>
+                                    
                                 </div>
                             </div>
                         </div>

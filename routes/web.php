@@ -19,13 +19,15 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/dashboard', 'DashboardController@index');
+
+// Dashboard
+Route::get('/dashboard', 'DashboardController@index')->middleware('auth');
 
 
 
 
-
-Route::get('/customer', 'CustomerController@index');
+// Customer
+Route::get('/customer', 'CustomerController@index')->middleware('auth');
 
 Route::get('/showTableCustomer', 'CustomerController@showCustomers');
 
@@ -41,8 +43,8 @@ Route::post('/deleteCustomer/{id}', 'CustomerController@delete');
 
 
 
-
-Route::get('/user', 'UserController@index');
+// User
+Route::get('/user', 'UserController@index')->middleware('auth');
 
 Route::get('/showTableUser', 'UserController@showUsers');
 

@@ -4,13 +4,16 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Yajra\Datatables\Datatables;
 
 class UserController extends Controller
 {
     public function index() {
-        return view('user');
+        $user = Auth::user();
+
+        return view('user', compact('user'));
     }
 
     public function showUsers() {
