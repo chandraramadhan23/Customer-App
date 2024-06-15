@@ -31,6 +31,14 @@ Route::get('/showTableCustomer', 'CustomerController@showCustomers');
 
 Route::post('/addCustomer', 'CustomerController@addCustomer');
 
+Route::get('/showEditCustomer/{id}', 'CustomerController@showEdit');
+
+Route::post('/editCustomer/{id}', 'CustomerController@edit');
+
+Route::post('/deleteCustomer/{id}', 'CustomerController@delete');
+
+
+
 
 
 

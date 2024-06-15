@@ -30,4 +30,28 @@ class CustomerController extends Controller
             'email' => $request->email,
         ]);
     }
+
+    public function showEdit($id) {
+        $user = Customer::where('id', $id)->first();
+
+        return response()->json([
+            'id' => $user->id,
+            'name' => $user->name,
+            'email' => $user->email,
+            'status' => $user->status,
+        ]);
+    }
+
+    public function edit(Request $request, $id) {
+        Customer::where('id', $id)->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'status' => $request->status,
+        ]);
+    }
+
+
+    public function delete($id) {
+        Customer::find($id)->delete();
+    }
 }
