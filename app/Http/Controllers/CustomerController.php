@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Customer;
+use App\Jobs\LoyalCustomerJob;
 use App\Jobs\NewCustomerJob;
+use App\Mail\LoyalCustomerMail;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 
@@ -48,6 +50,10 @@ class CustomerController extends Controller
             'email' => $request->email,
             'status' => $request->status,
         ]);
+
+        if ($request->status == 'LOYAL CUSTOMER') {
+            LoyalCustomerJob::dispatch($request->email);
+        }
     }
 
 

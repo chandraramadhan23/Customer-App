@@ -151,6 +151,8 @@
             }
         })
 
+        $(document).off('click', '#submitEdiCustomer')
+
         $(document).on('click', '#submitEdiCustomer', function() {
             let id = $(this).data('id')
             let name = $('#nameEdit').val()
