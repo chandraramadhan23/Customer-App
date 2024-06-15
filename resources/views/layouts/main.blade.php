@@ -95,6 +95,9 @@
     <!-- Chart cdn -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+    <!-- Sweet Alert 2 cdn-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <!-- JAVASCRIPT -->
     <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="assets/libs/simplebar/simplebar.min.js"></script>
@@ -150,9 +153,23 @@
             type: 'post',
             url: '/logout',
             success: function() {
-                if (confirm('Are you sure?')) {
+                Swal.fire({
+                title: "Are you sure?",
+                text: "You won't to logout!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Logout!"
+                }).then((result) => {
+                if (result.isConfirmed) {
                     window.location.href = '/login';
                 }
+                });
+
+                // if (confirm('Are you sure?')) {
+                    // window.location.href = '/login';
+                // }
             }
         })
     }) 

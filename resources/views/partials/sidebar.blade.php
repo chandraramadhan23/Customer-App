@@ -35,19 +35,19 @@
                 <li class="menu-title"><span data-key="t-menu">Pages</span></li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/dashboard" aria-controls="sidebarDashboards">
+                    <a class="nav-link {{ Request::is('dashboard*') ? 'active' : '' }}" href="/dashboard" aria-controls="sidebarDashboards">
                         <i class="mdi mdi-speedometer"></i> <span data-key="t-dashboards">Dashboards</span>
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/customer" aria-controls="sidebarDashboards">
+                    <a class="nav-link {{ Request::is('customer*') ? 'active' : '' }}" href="/customer" aria-controls="sidebarDashboards">
                         <i class="mdi mdi-view-grid-plus-outline"></i> <span data-key="t-dashboards">Data Customer</span>
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/user" aria-controls="sidebarDashboards">
+                    <a class="nav-link {{ Request::is('user*') ? 'active' : '' }}" href="/user" aria-controls="sidebarDashboards">
                         <i class="mdi mdi-view-grid-plus-outline"></i> <span data-key="t-dashboards">Users</span>
                     </a>
                 </li>

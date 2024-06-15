@@ -10,8 +10,8 @@
 
                 <div class="row">
                     <div class="col-lg-12">
-                        <h4 class="mb-1">Data Customer Page</h4>
-                        <p class="text-muted">Here's what's happening with your store today.</p>
+                        <h2 class="mb-1">Customer Page</h2>
+                        <p class="text-muted">Welcome to Customer Page.</p>
 
                         <button id="addCustomerButton" type="button" class="btn btn-primary btn-animation waves-effect waves-light mb-3" data-text="click me!"><span>Add Customer</span></button>
 
@@ -59,10 +59,17 @@
 
 
 
+
+
+
+
+
+
 @section('modal')
-    <!-- Modal add Customer -->
     @include('modals.modalAddCustomer')
     @include('modals.modalEditCustomer')
+    @include('modals.modalError')
+    <!-- Modal add Customer -->
 
     <script>
         $(document).on('click', '#addCustomerButton', function() {
@@ -81,8 +88,15 @@
                     email: email,
                 },
                 success: function() {
-                    alert('Berhasil!')
-                    window.location.reload()
+                    Swal.fire({
+                    title: 'Success!',
+                    text: 'Data berhasil ditambah',
+                    icon: 'success',
+                    confirmButtonText: 'Cool'
+                    })
+                    setTimeout(function(){
+                        window.location.reload()
+                    }, 1500)
                 }
             })
             })
@@ -141,7 +155,6 @@
                     <div class="mb-3">
                         <label for="message-text" class="col-form-label">Status :</label>
                         <select class="form-control" id="statusEdit">
-                            <option value='${response.status}>${response.status}</option>
                             <option value='NEW CUSTOMER'>New Customer</option>
                             <option value='LOYAL CUSTOMER'>Loyal Customer</option>
                         </select>
@@ -168,7 +181,15 @@
                     status: status,
                 },
                 success: function() {
-                    window.location.reload();
+                    Swal.fire({
+                    title: 'Success!',
+                    text: 'Data berhasil diubah',
+                    icon: 'success',
+                    confirmButtonText: 'Cool'
+                    })
+                    setTimeout(function(){
+                        window.location.reload()
+                    }, 1500)
                 }
             })
         })
@@ -189,9 +210,25 @@
             type: 'post',
             url: '/deleteCustomer/' + id,
             success: function() {
-                if (confirm('Are you sure?')) {
+                Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                    title: "Deleted!",
+                    text: "Customer has been deleted.",
+                    icon: "success"
+                    });
+
                     table.ajax.reload();
                 }
+                });
             }
             })
         }) 

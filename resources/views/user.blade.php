@@ -10,8 +10,8 @@
 
                 <div class="row">
                     <div class="col-12">
-                        <h4 class="mb-1">Data Customer Page</h4>
-                        <p class="text-muted">Here's what's happening with your store today.</p>
+                        <h2 class="mb-1">User Page</h2>
+                        <p class="text-muted">Welcome to User Page.</p>
                         <button id="addUserButton" type="button" class="btn btn-primary btn-animation waves-effect waves-light mb-3" data-text="click me!"><span>Add User</span></button>
                     </div>
                 </div>
@@ -26,12 +26,9 @@
                                 <table id="tableUser" class="table table-bordered nowrap table-striped align-middle" style="width:100%">
                                     <thead>
                                         <tr>
-                                            {{-- <th data-ordering="false">No</th> --}}
-                                            {{-- <th data-ordering="false">ID</th> --}}
-                                            <th data-ordering="false">ID</th>
-                                            <th data-ordering="false">username</th>
-                                            <th data-ordering="false">name</th>
-                                            {{-- <th data-ordering="false">Password</th> --}}
+                                            <th data-ordering="false">No</th>
+                                            <th data-ordering="false">Username</th>
+                                            <th data-ordering="false">Name</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -77,8 +74,15 @@
                     password: password,
                 },
                 success: function() {
-                    alert('Berhasil!')
-                    window.location.reload()
+                    Swal.fire({
+                    title: 'Success!',
+                    text: 'Data berhasil ditambah',
+                    icon: 'success',
+                    confirmButtonText: 'OK!'
+                    })
+                    setTimeout(function(){
+                        window.location.reload()
+                    }, 1500)
                 }
             })
             })
@@ -157,7 +161,15 @@
                     password: password,
                 },
                 success: function() {
-                    window.location.reload();
+                    Swal.fire({
+                    title: 'Success!',
+                    text: 'Data berhasil diubah',
+                    icon: 'success',
+                    confirmButtonText: 'Cool'
+                    })
+                    setTimeout(function(){
+                        window.location.reload()
+                    }, 1500)
                 }
             })
         })
@@ -177,9 +189,25 @@
             type: 'post',
             url: '/delete/' + id,
             success: function() {
-                if (confirm('Are you sure?')) {
+                Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                    title: "Deleted!",
+                    text: "User has been deleted.",
+                    icon: "success"
+                    });
+
                     table.ajax.reload();
                 }
+                });
               }
             })
         }) 

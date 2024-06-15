@@ -147,7 +147,6 @@
                 },
                 success: function(response) {
                     if (response.status == 'berhasil') {
-                        $('#modalError').modal('show');
                         window.location.href='/dashboard';
                     } else {
                         $('#modalError').modal('show');
