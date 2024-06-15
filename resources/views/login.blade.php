@@ -29,8 +29,8 @@
 
     <div class="auth-page-wrapper pt-5">
         <!-- auth page bg -->
-        <div class="auth-one-bg-position auth-one-bg" id="auth-particles">
-            {{-- <div class="bg-overlay"></div> --}}
+        <div class="auth-one-bg-position" id="auth-particles">
+            <div class="bg-overlay"></div>
 
             <div class="shape">
                 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1440 120">
@@ -58,7 +58,7 @@
                             <div class="card-body p-4">
                                 <div class="text-center mt-2">
                                     <h5 class="text-primary">Welcome Back !</h5>
-                                    <p class="text-muted">Sign in to continue to Customer App.</p>
+                                    <p class="text-muted">Login to continue to Customer App.</p>
                                 </div>
                                 <div class="p-2 mt-4">
                                     {{-- form --}}
@@ -76,7 +76,7 @@
                                     </div>                                        
 
                                     <div class="mt-4">
-                                        <button class="btn btn-success w-100" type="submit" id="submitLogin">Login</button>
+                                        <button class="btn btn-primary w-100" type="submit" id="submitLogin">Login</button>
                                     </div>
                                     
                                 </div>
@@ -131,6 +131,8 @@
 
 
 
+    @include('modals.modalError')
+
     <script>
         $(document).on('click', '#submitLogin', function() {
             let username = $('#username').val()
@@ -145,9 +147,10 @@
                 },
                 success: function(response) {
                     if (response.status == 'berhasil') {
+                        $('#modalError').modal('show');
                         window.location.href='/dashboard';
                     } else {
-                        window.location.href='/login';
+                        $('#modalError').modal('show');
                     }
                 }
             })
