@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Customer;
+use App\Jobs\NewCustomerJob;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 
@@ -19,6 +20,11 @@ class CustomerController extends Controller
     }
 
     public function addCustomer(Request $request) {
+
+        NewCustomerJob::dispatch(
+            $request->email,
+        );
+
         Customer::create([
             'name' => $request->name,
             'email' => $request->email,
