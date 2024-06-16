@@ -69,8 +69,8 @@
     @include('modals.modalAddCustomer')
     @include('modals.modalEditCustomer')
     @include('modals.modalError')
+    
     <!-- Modal add Customer -->
-
     <script>
         $(document).on('click', '#addCustomerButton', function() {
                 $('#formAddCustomer').modal('show')

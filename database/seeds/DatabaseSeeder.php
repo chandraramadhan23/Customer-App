@@ -22,8 +22,8 @@ class DatabaseSeeder extends Seeder
 
         Customer::create([
             // 'user_id' => 7690,
-            'name' => 'Daru',
-            'email' => 'daru@gmail.com',
+            'name' => 'Jajang',
+            'email' => 'jajang@gmail.com',
             'status' => 'NEW CUSTOMER',
         ]);
 
@@ -34,16 +34,23 @@ class DatabaseSeeder extends Seeder
             'status' => 'LOYAL CUSTOMER',
         ]);
 
-        User::create([
-            'username' => 'user1',
-            'name' => 'Muhammad Chandra Ramadhan',
-            'password'=> bcrypt('123'),
+        Customer::create([
+            // 'user_id' => 3435,
+            'name' => 'Tukijem',
+            'email' => 'tukijem@gmail.com',
+            'status' => 'NEW CUSTOMER',
         ]);
 
         User::create([
-            'username' => 'user2',
+            'username' => 'chandra',
+            'name' => 'M Chandra Ramadhan',
+            'password'=> bcrypt('chandra'),
+        ]);
+
+        User::create([
+            'username' => 'meleni',
             'name' => 'Meleni Alfianti',
-            'password'=> bcrypt('123'),
+            'password'=> bcrypt('meleni'),
         ]);
     }
 }

@@ -149,27 +149,30 @@
     <script>
 
     $(document).on('click', '#logout', function(){
-        $.ajax({
-            type: 'post',
-            url: '/logout',
-            success: function() {
-                Swal.fire({
-                title: "Are you sure?",
-                text: "You won't to logout!",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Logout!"
-                }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location.href = '/login';
-                }
+        Swal.fire({
+            title: "Are you sure?",
+            text: "Do you want to logout",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Logout"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    type: 'post',
+                    url: '/logout',
+                    success: function() {
+                        window.location.href = '/login';
+                    },
+                    error: function() {
+                    Swal.fire({
+                        title: "Error!",
+                        text: "There was an error and can not logout.",
+                        icon: "error"
+                    });
+                    }
                 });
-
-                // if (confirm('Are you sure?')) {
-                    // window.location.href = '/login';
-                // }
             }
         })
     }) 
