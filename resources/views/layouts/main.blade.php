@@ -163,7 +163,7 @@
                     type: 'post',
                     url: '/logout',
                     success: function() {
-                        window.location.href = '/login';
+                        window.location.href = '/';
                     },
                     error: function() {
                     Swal.fire({

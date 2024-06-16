@@ -20,47 +20,52 @@ use Illuminate\Support\Facades\Route;
 // });
 
 
-// Dashboard
-Route::get('/dashboard', 'DashboardController@index')->middleware('auth');
+Route::middleware('auth')->group(function(){
+
+
+    // Dashboard
+    Route::get('/dashboard', 'DashboardController@index');
 
 
 
 
-// Customer
-Route::get('/customer', 'CustomerController@index')->middleware('auth');
+    // Customer
+    Route::get('/customer', 'CustomerController@index');
 
-Route::get('/showTableCustomer', 'CustomerController@showCustomers');
+    Route::get('/showTableCustomer', 'CustomerController@showCustomers');
 
-Route::post('/addCustomer', 'CustomerController@addCustomer');
+    Route::post('/addCustomer', 'CustomerController@addCustomer');
 
-Route::get('/showEditCustomer/{id}', 'CustomerController@showEdit');
+    Route::get('/showEditCustomer/{id}', 'CustomerController@showEdit');
 
-Route::post('/editCustomer/{id}', 'CustomerController@edit');
+    Route::post('/editCustomer/{id}', 'CustomerController@edit');
 
-Route::post('/deleteCustomer/{id}', 'CustomerController@delete');
-
-
-
-
-
-// User
-Route::get('/user', 'UserController@index')->middleware('auth');
-
-Route::get('/showTableUser', 'UserController@showUsers');
-
-Route::post('/addUser', 'UserController@addUser');
-
-Route::get('/showEdit/{id}', 'UserController@showEdit');
-
-Route::post('/edit/{id}', 'UserController@edit');
-
-Route::post('/delete/{id}', 'UserController@delete');
+    Route::post('/deleteCustomer/{id}', 'CustomerController@delete');
 
 
 
 
 
-Route::get('/login', 'LoginController@index');
+    // User
+    Route::get('/user', 'UserController@index');
+
+    Route::get('/showTableUser', 'UserController@showUsers');
+
+    Route::post('/addUser', 'UserController@addUser');
+
+    Route::get('/showEdit/{id}', 'UserController@showEdit');
+
+    Route::post('/edit/{id}', 'UserController@edit');
+
+    Route::post('/delete/{id}', 'UserController@delete');
+
+});
+
+
+
+// Route::get('/login', 'LoginController@index');
+
+Route::get('/', 'LoginController@index')->name('login');
 
 Route::post('/login', 'LoginController@login');
 
