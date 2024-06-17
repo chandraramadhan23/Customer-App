@@ -164,7 +164,7 @@
             }
         })
 
-        $(document).off('click', '#submitEdiCustomer')
+        // $(document).off('click', '#submitEdiCustomer')
 
         $(document).on('click', '#submitEdiCustomer', function() {
             let id = $(this).data('id')
@@ -190,6 +190,13 @@
                     setTimeout(function(){
                         window.location.reload()
                     }, 1500)
+                },
+                error: function() {
+                    Swal.fire({
+                        title: "Error!",
+                        text: "There was an error and can not update.",
+                        icon: "error"
+                    });
                 }
             })
         })

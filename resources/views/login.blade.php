@@ -29,13 +29,11 @@
 
     <div class="auth-page-wrapper pt-5">
         <!-- auth page bg -->
-        <div class="auth-one-bg-position" id="auth-particles">
+        <div class="auth-one-bg-position auth-one-bg" id="auth-particles">
             <div class="bg-overlay"></div>
 
             <div class="shape">
-                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1440 120">
-                    <path d="M 0,36 C 144,53.6 432,123.2 720,124 C 1008,124.8 1296,56.8 1440,40L1440 140L0 140z"></path>
-                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#f3f4f5" fill-opacity="1" d="M0,96L20,96C40,96,80,96,120,112C160,128,200,160,240,165.3C280,171,320,149,360,138.7C400,128,440,128,480,160C520,192,560,256,600,250.7C640,245,680,171,720,165.3C760,160,800,224,840,218.7C880,213,920,139,960,122.7C1000,107,1040,149,1080,138.7C1120,128,1160,64,1200,53.3C1240,43,1280,85,1320,112C1360,139,1400,149,1420,154.7L1440,160L1440,320L1420,320C1400,320,1360,320,1320,320C1280,320,1240,320,1200,320C1160,320,1120,320,1080,320C1040,320,1000,320,960,320C920,320,880,320,840,320C800,320,760,320,720,320C680,320,640,320,600,320C560,320,520,320,480,320C440,320,400,320,360,320C320,320,280,320,240,320C200,320,160,320,120,320C80,320,40,320,20,320L0,320Z"></path></svg>
             </div>
         </div>
 
@@ -45,7 +43,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="text-center mt-sm-5 mb-4 text-white-50">
-                            <p class="mt-3 fs-15 fw-medium">Premium Admin & Dashboard Template</p>
+                            <p class="mt-3 fs-15 fw-medium text-white">Customer App - Test PT. Prakasa Alam Segar</p>
                         </div>
                     </div>
                 </div>
@@ -58,7 +56,7 @@
                             <div class="card-body p-4">
                                 <div class="text-center mt-2">
                                     <h5 class="text-primary">Welcome Back !</h5>
-                                    <p class="text-muted">Login to continue to Customer App.</p>
+                                    <p class="text-muted">Login to continue Customer App.</p>
                                 </div>
                                 <div class="p-2 mt-4">
                                     {{-- form --}}
@@ -76,7 +74,7 @@
                                     </div>                                        
 
                                     <div class="mt-4">
-                                        <button class="btn btn-primary w-100" type="submit" id="submitLogin">Login</button>
+                                        <button class="btn btn-primary btn-animation waves-effect waves-light w-100" type="submit" id="submitLogin">Login</button>
                                     </div>
                                     
                                 </div>

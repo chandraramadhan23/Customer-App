@@ -9,7 +9,7 @@
                 <img src="assets/images/logo-sm.png" alt="" height="22">
             </span>
             <span class="logo-lg">
-                <img src="assets/images/logo-light.png" alt="" height="17">
+                <img src="assets/images/logo-light.png" alt="" height="50">
             </span>
         </a>
         <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover" id="vertical-hover">
@@ -33,7 +33,7 @@
 
                 <li class="nav-item">
                     <a class="nav-link {{ Request::is('customer*') ? 'active' : '' }}" href="/customer" aria-controls="sidebarDashboards">
-                        <i class="mdi mdi-view-grid-plus-outline"></i> <span data-key="t-dashboards">Data Customer</span>
+                        <i class="mdi mdi-view-grid-plus-outline"></i> <span data-key="t-dashboards">Customers</span>
                     </a>
                 </li>
 
