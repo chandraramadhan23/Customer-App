@@ -27,8 +27,8 @@
                                     <thead>
                                         <tr class="table-light">
                                             <th data-ordering="false">No</th>
-                                            <th data-ordering="false">Username</th>
                                             <th data-ordering="false">Name</th>
+                                            <th data-ordering="false">Username</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -101,20 +101,28 @@
             ajax: {
                 type: 'get',
                 url: '/showTableUser',
+                dataSrc: function(json) {
+                    for(let i = 0, len = json.data.length; i < len; i++) {
+                        json.data[i].no = i + 1;
+                    }
+                    return json.data;
+                },
             },
             columns: [
-                {data: 'id'},
-                {data: 'username'},
+                {data: 'no'},
                 {data: 'name'},
+                {data: 'username'},
                 {
                     render:function(data, type, row) {
                         return `
                             <button class='btn btn-secondary edit' data-id='${row.id}'>Edit</button>
                             <button class='btn btn-danger delete' data-id='${row.id}'>Delete</button>
                         `
-                    }
+                    },
+                    // orderable: false,
+                    // searchable: false,
                 }
-            ]
+            ],
         })
 
 
@@ -139,7 +147,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="message-text" class="col-form-label">Password :</label>
-                        <input class="form-control" id="passwordEdit" value='${response.name}'>
+                        <input class="form-control" id="passwordEdit" value=''>
                     </div>
                     <button type="button" class="btn btn-primary" id="submitEditUser" data-id='${response.id}'>Submit</button>
                 `)
@@ -170,6 +178,13 @@
                     setTimeout(function(){
                         window.location.reload()
                     }, 1500)
+                },
+                error: function() {
+                    Swal.fire({
+                        title: "Error!",
+                        text: "There was an error and can not edited.",
+                        icon: "error"
+                    });
                 }
             })
         })
