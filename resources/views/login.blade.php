@@ -132,6 +132,25 @@
     @include('modals.modalError')
 
     <script>
+
+        // Addon Passeord
+        $(document).ready(function(){
+            $('#password-addon').on('click', function () {
+                var passwordInput = $('#password');
+                var passwordInputType = passwordInput.attr('type');
+                
+                if (passwordInputType === 'password') {
+                    passwordInput.attr('type', 'text');
+                    $(this).find('i').removeClass('ri-eye-fill').addClass('ri-eye-off-fill');
+                } else {
+                    passwordInput.attr('type', 'password');
+                    $(this).find('i').removeClass('ri-eye-off-fill').addClass('ri-eye-fill');
+                }
+            });
+        });
+
+
+        // Login Button
         $(document).on('click', '#submitLogin', function() {
             let username = $('#username').val()
             let password = $('#password').val()
