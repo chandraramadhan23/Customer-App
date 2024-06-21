@@ -111,7 +111,7 @@
         let table = $('#tableCustomer').DataTable({
             searching: true,
             serverSide: true,
-            ajax: {
+            ajax: { 
                 type: 'get',
                 url: '/showTableCustomer',
             },
@@ -187,9 +187,9 @@
                     icon: 'success',
                     confirmButtonText: 'Cool'
                     })
-                    setTimeout(function(){
-                        window.location.reload()
-                    }, 1500)
+                    window.location.reload()
+                    // setTimeout(function(){
+                    // }, 1500)
                 },
                 error: function() {
                     Swal.fire({
